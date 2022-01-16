@@ -30,7 +30,7 @@ class App():
         self.app_objects = []
         #Load modules
         for i in self.app_order:
-            loaded.append(imp.load_source(i + '.Run', '/home/pi/tyos/apps/' + i +'/' + i + '.py'))
+            loaded.append(imp.load_source(i + '.Run', '/home/pi/costan/apps/' + i +'/' + i + '.py'))
         #Load objects
         for i in loaded:
             self.app_objects.append(i.Run(self.fona))
@@ -56,7 +56,7 @@ class App():
         #Load the first four app's logo
         logos = {'surfaces':[], 'rects':[]}
         for i in range(0, 4):
-            logos['surfaces'].append(pygame.image.load('/home/pi/tyos/apps/' + self.app_order[i] + '/' + self.app_order[i] + '.png'))
+            logos['surfaces'].append(pygame.image.load('/home/pi/costan/apps/' + self.app_order[i] + '/' + self.app_order[i] + '.png'))
             logos['rects'].append(logos['surfaces'][i].get_rect())
 
         for i in range(0, 4):
@@ -67,7 +67,7 @@ class App():
         
     def get_app_order(self):
         #Get the order of the apps to be blitted
-        order_file = open('/home/pi/tyos/apps/order.txt', 'r')
+        order_file = open('/home/pi/costan/apps/order.txt', 'r')
         order = order_file.readlines()
 
         if len(order) < 4:
