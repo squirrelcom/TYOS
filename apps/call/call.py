@@ -1,10 +1,3 @@
-#Call App
-#copyright (c) 2015 Tyler Spadgenske
-#MIT License
-###############################
-#To be packaged with stock TYOS
-###############################
-
 import pygame
 from pygame.locals import *
 
@@ -21,10 +14,10 @@ class Run():
         self.fona = fona
 
         #Load images
-        self.circle_image = pygame.image.load('/home/pi/tyos/apps/call/circle.png')
-        self.call_image = pygame.image.load('/home/pi/tyos/apps/call/call.png')
-        self.back_image = pygame.image.load('/home/pi/tyos/apps/call/back.png')
-        self.hangup_image = pygame.image.load('/home/pi/tyos/apps/call/hangup.png')
+        self.circle_image = pygame.image.load('/home/pi/costan/apps/call/circle.png')
+        self.call_image = pygame.image.load('/home/pi/costan/apps/call/call.png')
+        self.back_image = pygame.image.load('/home/pi/costan/apps/call/back.png')
+        self.hangup_image = pygame.image.load('/home/pi/costan/apps/call/hangup.png')
 
         self.numbers = {'surfaces':[], 'rects':[]}
 
@@ -34,7 +27,7 @@ class Run():
         self.BLACK = (0,0,0)
 
         #Setup fonts
-        self.font = pygame.font.Font('/home/pi/tyos/fonts/liberation_sans.ttf', 48)
+        self.font = pygame.font.Font('/home/pi/costan/fonts/liberation_sans.ttf', 48)
 
         #Setup numbers Text
         self.number = self.font.render('1', True, self.RED, self.WHITE)
