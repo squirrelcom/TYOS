@@ -1,6 +1,3 @@
-#main.py
-#Copyright (c) 2015 Tyler Spadgenske
-#MIT License
 
 '''
 Usage:
