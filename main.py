@@ -11,7 +11,7 @@ To check for updates go to https://github.com/spadgenske/TYOS/releases/latest an
 current version of TYOS. If higher, you can update. To get your version of TYOS run the command
 sudo python /home/pi/tyos/src/main.py --version
 '''
-VERSION = '0.5.6'
+VERSION = 'Mercury 1.0'
 
 #Set to True if you do not want the time modified off the FONA
 USE_RAW_TIME = False
@@ -30,7 +30,7 @@ class tyos():
             else:
                 self.POWER_FONA = False
             if arg == '--version':
-                print 'TYOS VERSION ' + VERSION
+                print 'CostanOS VERSION ' + VERSION
                 sys.exit()
 
         self.VERSION = VERSION
@@ -71,19 +71,19 @@ class tyos():
         self.update = True
 
         #Setup logo
-        self.logo = pygame.image.load('/home/pi/tyos/graphics/logo.png')
+        self.logo = pygame.image.load('/home/pi/costan/graphics/logo.png')
         self.logo_rect = self.logo.get_rect()
         self.logo_rect.y = self.surface.get_rect().centery - 50
         self.logo_rect.centerx = self.surface.get_rect().centerx
 
         #Setup Battery Icon
-        self.bat = pygame.image.load('/home/pi/tyos/graphics/bat.png')
+        self.bat = pygame.image.load('/home/pi/costan/graphics/bat.png')
         self.bat_rect = self.bat.get_rect()
         self.bat_rect.centery = 15
         self.bat_rect.right = self.WINDOWWIDTH - 10
 
         #Setup Low Battery Icon
-        self.low_bat = pygame.image.load('/home/pi/tyos/graphics/low_bat.png')
+        self.low_bat = pygame.image.load('/home/pi/costan/graphics/low_bat.png')
         self.low_bat_rect = self.low_bat.get_rect()
         self.low_bat_rect.centery = 380
         self.low_bat_rect.centerx = self.surface.get_rect().centerx
@@ -99,7 +99,7 @@ class tyos():
         self.bat_left = {'surface':self.toolbar.bat_left, 'rects':self.toolbar.bat_left_rect}
 
         #Setup fonts
-        self.font = pygame.font.Font('/home/pi/tyos/fonts/liberation_sans.ttf', 20)
+        self.font = pygame.font.Font('/home/pi/costan/fonts/liberation_sans.ttf', 20)
 
         #Setup clock Text
         self.clock_text = self.font.render('12:00', True, self.WHITE, self.BLACK)
@@ -116,16 +116,16 @@ class tyos():
     def set_audio(self):
         #Set audio in/out to selected from config file
         try: #See if config file exists
-            self.audio_file = open('/home/pi/tyos/configure/audio.conf', 'r')
+            self.audio_file = open('/home/pi/costan/configure/audio.conf', 'r')
         except:
-            if not os.path.exists('/home/pi/tyos/configure'):#If configure directory doesn't exist, create one
+            if not os.path.exists('/home/pi/costan/configure'):#If configure directory doesn't exist, create one
                 os.mkdir('/home/pi/tyos/configure')
 
-            self.audio_file = open('/home/pi/tyos/configure/audio.conf', 'w+')#Create config file and add some lines
+            self.audio_file = open('/home/pi/costan/configure/audio.conf', 'w+')#Create config file and add some lines
             self.audio_file.write('#Audio config file\n')
             self.audio_file.write('mode=1\n')
             self.audio_file.close()
-            self.audio_file = open('/home/pi/tyos/configure/audio.conf', 'r')
+            self.audio_file = open('/home/pi/costan/configure/audio.conf', 'r')
 
         file = self.audio_file.readlines()
 
@@ -242,7 +242,7 @@ try:
 
 except KeyboardInterrupt:
     print
-    print 'Closing TYOS ' + phone.VERSION
+    print 'Closing CostanOS ' + phone.VERSION
     if phone.POWER_FONA:
         power.Power().toggle()
     pygame.quit()
@@ -252,9 +252,9 @@ except SystemExit:
 except:
     print '******************************************'
     print 'An Error Occured'
-    print 'Writing to log /home/pi/tyos/logs/tyos.log'
+    print 'Writing to log
     print '******************************************'
     #If error occurs, save it to file
     error = traceback.format_exc()
-    error_log = open('/home/pi/tyos/logs/tyos.log', 'w')
+    error_log = open('/home/pi/costan/logs/costan.log', 'w')
     error_log.write(error)
