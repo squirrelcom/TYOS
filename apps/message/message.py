@@ -29,23 +29,23 @@ class Run():
         self.page = 1
 
         #Load images
-        self.keyboard_image = pygame.image.load('/home/pi/tyos/apps/message/keyboard.png')
-        self.num_keyboard_image = pygame.image.load('/home/pi/tyos/apps/message/numbered_keyboard.png')
-        self.bubble = pygame.image.load('/home/pi/tyos/apps/message/bubble.png')
+        self.keyboard_image = pygame.image.load('/home/pi/costan/apps/message/keyboard.png')
+        self.num_keyboard_image = pygame.image.load('/home/pi/costan/apps/message/numbered_keyboard.png')
+        self.bubble = pygame.image.load('/home/pi/costan/apps/message/bubble.png')
         self.keyboard_rect = self.keyboard_image.get_rect()
         self.keyboard_rect.x = 6
         self.keyboard_rect.y = 293
 
         #Main conversation image
-        self.conversation_image = pygame.image.load('/home/pi/tyos/apps/message/conversation.png')
+        self.conversation_image = pygame.image.load('/home/pi/costan/apps/message/conversation.png')
         self.conversation_rect = self.conversation_image.get_rect()
         self.conversation_rect.centerx = 160
         self.conversation_rect.centery = 260
 
         #Setup text
         #Setup fonts
-        self.font = pygame.font.Font('/home/pi/tyos/fonts/liberation_sans.ttf', 20)
-        self.message_font = pygame.font.Font('/home/pi/tyos/fonts/liberation_sans.ttf', 12)
+        self.font = pygame.font.Font('/home/pi/costan/fonts/liberation_sans.ttf', 20)
+        self.message_font = pygame.font.Font('/home/pi/costan/fonts/liberation_sans.ttf', 12)
 
         #please wait Text
         self.wait = self.font.render('Please wait...', True, self.BLACK, self.WHITE)
@@ -54,7 +54,7 @@ class Run():
         self.wait_rect.centery = 240
 
         #Says... text
-        self.says_text1 = self.font.render('Tyler says...', True, self.BLACK, self.WHITE)
+        self.says_text1 = self.font.render('John says...', True, self.BLACK, self.WHITE)
         self.says_rect1 = self.says_text1.get_rect()
         self.says_rect1.x = 35
         self.says_rect1.y = 120
@@ -140,11 +140,10 @@ class Run():
     def load_contacts(self):
         self.contacts = {'names':[], 'numbers':[]}
         try:
-            contact_file = open('/home/pi/tyos/configure/contacts.conf', 'r')
+            contact_file = open('/home/pi/costan/configure/contacts.conf', 'r')
         except:
             print '***********************************************************'
             print 'NO CONTACTS FOUND'
-            print 'PLEASE EDIT /home/pi/tyos/configure/contacts.conf FILE'
             print '***********************************************************'
             if not os.path.exists('/home/pi/tyos/configure'):
                 os.mkdir('/home/pi/tyos/configure')
@@ -154,7 +153,7 @@ class Run():
             contact_file.write('#Contacts\n')
             contact_file.write('#Use format name=number i.e. Joe=1555666777 # are comments\n')
             contact_file.close()
-            contact_file = open('/home/pi/tyos/configure/contacts.conf', 'r')
+            contact_file = open('/home/pi/costan/configure/contacts.conf', 'r')
 
         self.contact_list = contact_file.readlines()
         contact_file.close()
