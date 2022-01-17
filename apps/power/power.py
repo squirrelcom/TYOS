@@ -13,7 +13,7 @@ class Run():
         self.POWER_DOWN = False
 
         #Define images
-        self.shutdown_image = pygame.image.load('/home/pi/tyos/apps/power/shutdown.png')
+        self.shutdown_image = pygame.image.load('/home/pi/costan/apps/power/shutdown.png')
         self.shutdown_rect = self.shutdown_image.get_rect()
         self.shutdown_rect.centerx = 160
         self.shutdown_rect.centery = 240
@@ -30,16 +30,16 @@ class Run():
     def get_events(self, event):
         if event.pos[0] > 60 and event.pos[0] < 260:
             if event.pos[1] > 134 and event.pos[1] < 200:
-                print 'Shutting Down TYOS'
+                print 'Shutting Down costanOS'
                 self.shutdown()
             if event.pos[1] > 200 and event.pos[1] < 272:
-                print 'Logging Out of TYOS'
+                print 'Logging Out of costanOS'
                 self.logout()
             if event.pos[1] > 272 and event.pos[1] < 344:
                 self.exit = True
 
     def shutdown(self):
-        os.system('sudo python /home/pi/tyos/src/power.py') #Power off fona
+        os.system('sudo python /home/pi/costan/src/power.py') #Power off fona
         pygame.quit()
         time.sleep(1)
         a = Popen(['sudo', 'halt']) #Power down Raspberry Pi
